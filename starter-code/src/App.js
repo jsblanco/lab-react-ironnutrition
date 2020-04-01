@@ -31,7 +31,6 @@ class App extends Component {
   };
 
   searchHandler = query => {
-    console.log(query.target.value);
     this.setState({
       searchQuery: query.target.value
     });
@@ -44,7 +43,7 @@ class App extends Component {
     personalList.map(savedFood => {
       console.log("savedFood name: ",savedFood.name)
       if (savedFood.name === food.name) {
-        savedFood.quantity += food.quantity;
+        savedFood.quantity = parseInt(savedFood.quantity)+ parseInt(food.quantity);
         alreadyInList= true
       }
     });
@@ -71,9 +70,8 @@ class App extends Component {
     }
 
     if (this.state.searchQuery) {
-      let query = this.state.searchQuery;
       foodList = this.state.foodList.filter(foodElement =>
-        foodElement.name.toLowerCase().includes(query.toLowerCase())
+        foodElement.name.toLowerCase().includes(this.state.searchQuery.toLowerCase())
       );
     } else {
       foodList = this.state.foodList;
