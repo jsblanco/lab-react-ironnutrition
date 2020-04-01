@@ -29,6 +29,9 @@ const PersonalFoodList = (props) =>{
         </p>
       </div>
     </div>
+    <button onClick={()=>props.deleteFood(props.children)} className="button is-info">
+            -
+          </button>
   </article>
 
     )

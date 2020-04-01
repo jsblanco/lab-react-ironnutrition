@@ -56,6 +56,14 @@ class App extends Component {
     });
   };
 
+  removeFromList = food => {
+    let personalList = [...this.state.personalFoodList]
+    personalList.splice(personalList.indexOf(food), 1)
+    this.setState({
+      personalFoodList: personalList
+    })
+  }
+
   render() {
     let addFoodForm, foodList;
     if (this.state.displayAddFood === true) {
@@ -97,7 +105,7 @@ class App extends Component {
           <section className="personal-list">
             <h3>Personal food list:</h3>
             {this.state.personalFoodList.map((food, index) => {
-              return <PersonalFoodList key={index}>{food}</PersonalFoodList>;
+              return <PersonalFoodList key={index} deleteFood={this.removeFromList}>{food}</PersonalFoodList>;
             })}
           </section>
         </div>
