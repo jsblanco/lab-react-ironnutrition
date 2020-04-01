@@ -1,22 +1,24 @@
-import React from "react"
-
+import React, {useState} from "react"
 import 'bulma/css/bulma.css';
 
+
 const FoodBox = (props) =>{
+
+const [quantity, setQuantity]=useState(1)
 
     return (
         <div className="box">
   <article className="media">
     <div className="media-left">
       <figure className="image is-64x64">
-        <img src={props.children.image} alt={props.children.name}/>
+        <img src={props.food.image} alt={props.food.name}/>
       </figure>
     </div>
     <div className="media-content">
       <div className="content">
         <p>
-          <strong>{props.children.name}</strong> <br />
-          <small>{props.children.calories} cal</small>
+          <strong>{props.food.name}</strong> <br />
+          <small>{props.food.calories} cal</small>
         </p>
       </div>
     </div>
@@ -24,13 +26,14 @@ const FoodBox = (props) =>{
       <div className="field has-addons">
         <div className="control">
           <input
+            onChange={(event)=>setQuantity(event.target.value)}
             className="input"
             type="number" 
-            value="1"
+            value={quantity}
           />
         </div>
         <div className="control">
-          <button className="button is-info">
+          <button onClick={()=>props.addtoPersonalList({...props.food, quantity:quantity})} className="button is-info">
             +
           </button>
         </div>
@@ -40,6 +43,8 @@ const FoodBox = (props) =>{
 </div>
     )
 }
+
+
 
 export default FoodBox;
 

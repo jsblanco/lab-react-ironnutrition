@@ -1,11 +1,18 @@
+.App{
+  margin:50px;
+}
 
-.search-results{
+.personal-list, .search-results{
+  width: 40%;  
   margin: 50px;
-  width: 600px;  
+}
+.app-body{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .add-food>form{
-  margin: 50px;
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -21,4 +28,8 @@
   border-radius: 250px;
   font-size: 1.2em;
   font-weight: bold;
+}
+h3{
+  font-size: 2em !important;
+  font-weight: bold !important;
 }
